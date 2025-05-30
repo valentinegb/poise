@@ -12,7 +12,7 @@ pub struct CreateReply<'a> {
     embeds: Vec<serenity::CreateEmbed<'a>>,
     attachments: Vec<serenity::CreateAttachment<'a>>,
     pub(crate) ephemeral: Option<bool>,
-    components: Option<Cow<'a, [serenity::CreateActionRow<'a>]>>,
+    components: Option<Cow<'a, [serenity::CreateComponent<'a>]>>,
     pub(crate) allowed_mentions: Option<serenity::CreateAllowedMentions<'a>>,
     poll: Option<serenity::CreatePoll<'a, serenity::builder::create_poll::Ready>>,
     reply: bool,
@@ -43,7 +43,7 @@ impl<'a> CreateReply<'a> {
     /// Any previously set components will be overwritten.
     pub fn components(
         mut self,
-        components: impl Into<Cow<'a, [serenity::CreateActionRow<'a>]>>,
+        components: impl Into<Cow<'a, [serenity::CreateComponent<'a>]>>,
     ) -> Self {
         self.components = Some(components.into());
         self
